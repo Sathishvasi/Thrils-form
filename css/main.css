@@ -466,11 +466,11 @@ textarea.input100 {
 
 @media (max-width: 576px) {
   .contact100-form {
-    padding: 40px 15px 48px 15px;
+    padding: 40px 25px 48px 25px;
   }
 
   .input100 {
-    padding: 0 25px 0 40px;
+    padding: 0 25px;
   }
 
   .label-input100 {
