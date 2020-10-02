@@ -265,6 +265,12 @@ iframe {
   overflow: hidden;
   
   padding: 30px 15px 30px 15px;
+  flex-direction: column;
+}
+
+.subtitle{
+  text-transform: capitalize;
+  color: white;
 }
 
 .contact100-form-title::before {
@@ -276,7 +282,8 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(67,67,67,0.6);
+  /* background-color: rgba(67,67,67,0.6);*/
+  background-color: rgb(0 0 0 / 54%);
 }
 
 
@@ -302,7 +309,8 @@ iframe {
 .wrap-input100 {
   width: 100%;
   position: relative;
-  border: 1px solid #e6e6e6;
+  /* border: 1px solid #e6e6e6; */
+  border: 1px solid #b3b2b2;
   border-radius: 2px;
   margin-bottom: 15px
 }
@@ -336,7 +344,7 @@ iframe {
   font-size: 15px;
   color: #333333;
   line-height: 1.2;
-  padding: 0 25px 0 60px;
+  padding: 0 25px;
 }
 
 input.input100 {
@@ -344,7 +352,7 @@ input.input100 {
 }
 
 textarea.input100 {
-  min-height: 162px;
+  min-height: 130px;
   padding-top: 22px;
   padding-bottom: 15px;
 }
@@ -476,6 +484,7 @@ textarea.input100 {
 
 .validate-input {
   position: relative;
+  margin-bottom: 30px;
 }
 
 .alert-validate .focus-input100 {
@@ -541,7 +550,7 @@ textarea.input100 {
   align-items: center;
   justify-content: center;
   position: absolute;
-  height: 100%;
+  /* height: 100%; */
   top: 0px;
   right: -25px;
 }
@@ -606,6 +615,199 @@ textarea.input100 {
   font-weight: bold;
 }
 
+/* radio button & checkbox */
+.ex-checkbox,
+.ex-radio {
+	position: relative;
+	margin: 12px 0;
+	font-size: 14px;
+}
+
+.ex-checkbox label,
+.ex-radio label {
+	padding-left: 32px;
+	line-height: 140%;
+	font-weight: normal;
+	display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.ex-checkbox input[type=checkbox],
+.ex-radio input[type=radio] {
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	z-index: 10;
+	position: absolute;
+}
+
+.ex-radio input[type=radio] + label::before {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0;
+	border: 1px solid #9f9f9f;
+	border-radius: 50%;
+	background-color: #fff;
+	transition: border 0.3s ease-in-out;
+}
+
+.ex-radio input[type=radio]:hover + label::before {
+	border: 2px solid #0288d1;
+}
+
+.ex-radio input[type=radio]:focus + label::before {
+	box-shadow: 0 0 1px #0288d1;
+	outline: none;
+}
+
+.ex-radio input[type=radio]:checked + label::before,
+.ex-radio input[type=radio]:checked:hover + label::before {
+	border: 1px solid #0288d1;
+}
+
+.ex-radio input[type=radio] +  label::after {
+	position: absolute;
+	content: " ";
+	width: 12px;
+	height: 12px;
+	left: 4px;
+	top: 4px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	transform: scale(0, 0);
+	transition: transform 0.3s ease-in-out;
+}
+
+.ex-radio input[type=radio]:checked +  label::after {
+	background-color: #0288d1;
+	-webkit-transform: scale(1, 1);
+	-ms-transform: scale(1, 1);
+	-o-transform: scale(1, 1);
+	-moz-transform: scale(1, 1);
+	transform: scale(1, 1);
+}
+
+.ex-radio input[type="radio"]:disabled {
+	cursor: not-allowed;
+}
+
+.ex-radio input[type="radio"]:disabled + label {
+	color: #bcbcbc;
+	cursor: not-allowed;
+}
+
+.ex-radio input[type=radio]:disabled +  label::before,
+.ex-radio input[type=radio]:checked:disabled +  label::before {
+	border: 1px solid #bcbcbc;
+}
+
+.ex-radio input[type=radio]:checked:disabled +  label::after {
+	background-color: #bcbcbc;
+}
+
+.validate-radio{
+  /* margin-bottom: 15px; */
+  width: 100%;
+}
+
+.validate-radio p, .validate-checkbox p{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.validate-radio .radio-group{
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.radio-block .radio-group {
+  width: 100%;
+  flex-direction: column;
+}
+
+.input-inradio input {
+  border: 1px solid #b3b2b2;
+  margin-top: 12px;
+  min-height: 30px;
+  border-radius: 2px;
+  padding: 8px 10px;
+}
+
+.input-inradio input:focus{
+ border-color: #b3b2b2 !important;
+}
+
+.input-inradio-block label{
+  display: block;
+}
+
+.ex-radio input[type=radio]:checked ~ .hidden-input{
+  display: block;
+}
+
+.hidden-input{
+  display: none;
+}
+
+/* checkbox */
+.ex-checkbox input[type=checkbox] + label::before {
+	border: 1px solid #9f9f9f;
+	width: 20px;
+	height: 20px;
+	content: '';
+	position: absolute;
+	left: 0;
+	background-color: #fff;
+}
+
+.ex-checkbox input[type=checkbox]:hover + label::before {
+	border: 2px solid #0288d1;
+}
+
+.ex-checkbox input[type=checkbox]:focus + label::before {
+	box-shadow: 0 0 1px #0288d1;
+	outline: none;
+}
+
+.ex-checkbox input[type=checkbox]:checked + label::before {
+	border: 1px solid transparent;
+	background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSIjMDI4OGQxIiBkPSJNMTguOSA4LjhsLTguNyA4LjdjLS4xLjEtLjIuMS0uMyAwbC00LjktNC45Yy0uMS0uMS0uMS0uMiAwLS4zbDEuMi0xLjJjLjEtLjEuMi0uMS4zIDBsMy42IDMuNiA3LjMtNy4zYy4xLS4xLjItLjEuMyAwbDEuMiAxLjJjLjEgMCAuMS4xIDAgLjJ6IiAvPjwvc3ZnPg==') no-repeat center center;
+	background-size: 24px 24px;
+}
+
+.ex-checkbox input[type=checkbox]:checked:hover + label::before {
+	background-size: 30px 30px;
+}
+
+.ex-checkbox input[type=checkbox]:disabled {
+	cursor: not-allowed;
+}
+
+.ex-checkbox input[type=checkbox]:disabled + label {
+	color: #bcbcbc;
+	cursor: not-allowed;
+}
+
+.ex-checkbox input[type=checkbox]:disabled:checked + label::before {
+	border: 1px solid transparent;
+	background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSIjYmNiY2JjIiBkPSJNMTguOSA4LjhsLTguNyA4LjdjLS4xLjEtLjIuMS0uMyAwbC00LjktNC45Yy0uMS0uMS0uMS0uMiAwLS4zbDEuMi0xLjJjLjEtLjEuMi0uMS4zIDBsMy42IDMuNiA3LjMtNy4zYy4xLS4xLjItLjEuMyAwbDEuMiAxLjJjLjEgMCAuMS4xIDAgLjJ6IiAvPjwvc3ZnPg==') no-repeat center center;
+}
+
+.ex-checkbox input[type=checkbox]:disabled + label::before {
+	border: 1px solid #bcbcbc;
+}
+
+.adjust-radio{
+  width: 68% !important;
+}
+
 @media (max-width: 576px) {
   .home-content__text{
     max-width: 100%;
@@ -613,4 +815,57 @@ textarea.input100 {
   .home-content img{
     width: 250px;
   }
+
+  .adjust-radio{
+    width: 73% !important;
+  }
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #004073; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 5px;
+  padding: 14px 16px;
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  top: 30px; /* 30px from the top */
+  z-index: 999;
+  box-shadow: 1px 2px 20px 2px #0000009c;
+  font-size: 14px;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 30px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 30px; opacity: 1;}
+  to {top: 0; opacity: 0;}
 }
