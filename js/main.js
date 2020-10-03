@@ -41,17 +41,50 @@
         }
         if(check){
             let formEle = $('.contact100-form').serializeArray();
-            let createObj = [];
+            let createObj = {};
             formEle.forEach((v,i)=>{
                 let header = v.name;
                 let value = v.value;
-                createObj[header] = value;
+                if(value != ''){
+                    createObj[header] = value;
+                }
             });
-            console.log(createObj)
 
-            $('.contact100-form')[0].reset();
-            $('.validate-input').removeClass('true-validate');
-            $('#snackbar').text("Your Form Submitted Successfully!").addClass('show');
+            // Are you interested in learning something new
+            createObj.learn = {
+                'choice' : createObj.learning,
+                'inputValue' : createObj.learningInput
+            }
+            delete createObj.learning;
+            delete createObj.learningInput;
+
+            //What would you choose in your spare time?
+            createObj.sparetime = {
+                'choice' : createObj.time,
+                'inputValue' : createObj.timeInput
+            }
+            delete createObj.time;
+            delete createObj.timeInput;
+
+            console.log(createObj);
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                crossDomain: true,
+                url: 'https://thrills-mode.herokuapp.com/signup/save',
+                data: JSON.stringify(createObj),
+                success: function(response){
+                    console.log(response);
+                    $('.contact100-form')[0].reset();
+                    $('.validate-input').removeClass('true-validate');
+                    $('#snackbar').text("Your Form Submitted Successfully!").addClass('show');
+                },
+                error: function(){
+                    $('#snackbar').text("Server Error!").addClass('show');
+                }
+            });
+
         }else{
             $("html, body").animate({ scrollTop: "0" }, 2000);
             $('#snackbar').text("Please fill all the fields!").addClass('show');
