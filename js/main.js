@@ -31,6 +31,7 @@
     var input = $('.validate-input .input100');
 
     $('.validate-form').on('submit',function(){
+
         var check = true;
 
         for(var i=0; i<input.length; i++) {
@@ -40,6 +41,9 @@
             }
         }
         if(check){
+            // Start loader
+            $('.loader-container').css('display','flex');
+
             let formEle = $('.contact100-form').serializeArray();
             let createObj = {};
             formEle.forEach((v,i)=>{
@@ -66,22 +70,31 @@
             delete createObj.time;
             delete createObj.timeInput;
 
-            console.log(createObj);
+            // console.log(createObj);
+            let formData = JSON.stringify(createObj).replace(/"/g, "'");
+            console.log(formData);
 
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
-                crossDomain: true,
                 url: 'https://thrills-mode.herokuapp.com/signup/save',
-                data: JSON.stringify(createObj),
+                data: `{"data": "${formData}"}`,
                 success: function(response){
                     console.log(response);
                     $('.contact100-form')[0].reset();
                     $('.validate-input').removeClass('true-validate');
+                    $('.loader-container').hide();
                     $('#snackbar').text("Your Form Submitted Successfully!").addClass('show');
+                    setTimeout(function(){ 
+                        $('#snackbar').removeClass('show');
+                    }, 3000);
                 },
                 error: function(){
+                    $('.loader-container').hide();
                     $('#snackbar').text("Server Error!").addClass('show');
+                    setTimeout(function(){ 
+                        $('#snackbar').removeClass('show');
+                    }, 3000);
                 }
             });
 
@@ -90,9 +103,7 @@
             $('#snackbar').text("Please fill all the fields!").addClass('show');
         }
 
-        setTimeout(function(){ 
-            $('#snackbar').removeClass('show');
-        }, 3000);
+        
 
         return false;
     });
