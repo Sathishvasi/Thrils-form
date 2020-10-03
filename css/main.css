@@ -64,7 +64,8 @@ p {
 	font-family: Montserrat-Regular;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
+  /* color: #666666; */
+  color: #b3b3b3;
 	margin: 0px;
 }
 
@@ -271,6 +272,7 @@ iframe {
 .subtitle{
   text-transform: capitalize;
   color: white;
+  margin-top: 5px;
 }
 
 .contact100-form-title::before {
