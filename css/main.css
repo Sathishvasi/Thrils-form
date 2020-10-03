@@ -886,8 +886,8 @@ textarea.input100 {
   height: 42px;
   width: 4px;
   position: absolute;
-  left: 48px;
-  top: 10px;
+  left: 44px;
+  top: 5px;
   background: #fff;
   border-radius: 2px;
   transform-origin: 2px 40px;
@@ -899,8 +899,8 @@ textarea.input100 {
   height: 27px;
   width: 4px;
   position: absolute;
-  left: 48px;
-  top: 25px;
+  left: 44px;
+  top: 20px;
   background: #fff;
   border-radius: 2px;
   transform-origin: 2px 25px;
